@@ -253,3 +253,10 @@ footer {
         max-width: 100%;
     }
 }
+
+/* Monitor sangat lebar */
+@media (min-width: 1400px) {
+    main {
+        max-width: 1300px;
+    }
+}
