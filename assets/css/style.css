@@ -148,6 +148,11 @@ td button.btn-hapus {
     color: #fff;
 }
 
+.table-responsive {
+    white-space: pre;
+    margin: 0;
+}
+
 /* ===== Form ===== */
 form p {
     margin-bottom: 1rem;
