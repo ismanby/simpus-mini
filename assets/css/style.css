@@ -148,11 +148,6 @@ td button.btn-hapus {
     color: #fff;
 }
 
-.table-responsive {
-    white-space: pre;
-    margin: 0;
-}
-
 /* ===== Form ===== */
 form p {
     margin-bottom: 1rem;
@@ -200,6 +195,11 @@ footer {
 /* ===== Tabel Responsif ===== */
 .table-responsive {
     overflow-x: auto;
+}
+
+.table-responsive pre {
+    white-space: pre;
+    margin: 0;
 }
 
 /* ===== Hamburger Menu (checkbox hack) ===== */
