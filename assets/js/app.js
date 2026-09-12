@@ -80,22 +80,17 @@ function initValidasiForm() {
     form.addEventListener("submit", function (e) {
         let valid = true;
 
-        const judul = form.querySelector("[name='judul'], [name='nama']");
-        if (judul && judul.value.trim() === "") {
-            tampilkanError(judul, "Field ini wajib diisi.");
-            valid = false;
-        } else if (judul) {
-            hapusError(judul);
-        }
-
-        const pengarang = form.querySelector("[name='pengarang']");
-        if (pengarang && pengarang.value.trim() === "") {
-            tampilkanError(pengarang, "Pengarang wajib diisi.");
-            valid = false;
-        } else if (pengarang) {
-            hapusError(pengarang);
-        }
-
+        const aturanWajib = ["judul", "nama", "pengarang", "alamat"];
+        aturanWajib.forEach(function (namaField) {
+            const field = form.querySelector("[name='" + namaField + "']");
+            if (field && field.value.trim() === "") {
+                tampilkanError(field, "Field ini wajib diisi.");
+                valid = false;
+            } else if (field) {
+                hapusError(field);
+            }
+        });
+        
         const tahun = form.querySelector("[name='tahun']");
         if (tahun) {
             const nilai = parseInt(tahun.value, 10);
