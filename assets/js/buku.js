@@ -1,6 +1,6 @@
 const configBuku = {
     url: "../data/buku.json",
-    kolom: ["judul", "pengarang", "tahun", "stok"],
+    kolom: ["judul", "pengarang", "tahun", "stok", "kategori"],
     tombol: [
         { class: "btn-edit", label: "Edit" },
         { class: "btn-detail", label: "Detail" },
