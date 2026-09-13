@@ -1,0 +1,6 @@
+[
+    { "no_anggota": "A001", "nama": "Siti Aminah", "alamat": "Malang", "no_hp": "0812xxxx", "email": "siti.aminah@gmail.com", "tahun_bergabung": 2022 },
+    { "no_anggota": "A002", "nama": "Budi Santoso", "alamat": "Batu", "no_hp": "0813xxxx", "email": "budi.santoso@gmail.com", "tahun_bergabung": 2024 },
+    { "no_anggota": "A003", "nama": "Dewi Lestari", "alamat": "Malang", "no_hp": "0814xxxx", "email": "dewi.lestari@gmail.com", "tahun_bergabung": 2023 },
+    { "no_anggota": "A004", "nama": "Rizky Firmansyah", "alamat": "Lawang", "no_hp": "0815xxxx", "email": "rizky.firmansyah@gmail.com", "tahun_bergabung": 2023 }
+]
