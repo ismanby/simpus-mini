@@ -42,3 +42,10 @@ async function muatDaftarBuku() {
 }
 
 document.addEventListener("DOMContentLoaded", muatDaftarBuku);
+
+document.addEventListener("DOMContentLoaded", function () {
+    const reloadBtn = document.getElementById("reload-btn");
+    if (reloadBtn) {
+        reloadBtn.addEventListener("click", muatDaftarBuku);
+    }
+});

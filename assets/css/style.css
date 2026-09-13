@@ -242,6 +242,21 @@ footer {
     border-radius: 4px;
 }
 
+/* Style reload button */
+#reload-btn {
+    background-color: #8a6674;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+#reload-btn:hover {
+    background-color: #6d4f5a;
+}
+
 /* ===== Responsive Breakpoints ===== */
 
 /* Tablet ke bawah */
