@@ -152,6 +152,11 @@ td button.btn-hapus {
     color: #fff;
 }
 
+/* ===== Cegah tombol aksi wrap ke baris baru ===== */
+td:last-child {
+    white-space: nowrap;
+}
+
 /* ===== Form ===== */
 form p {
     margin-bottom: 1rem;
