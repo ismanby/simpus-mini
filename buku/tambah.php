@@ -28,9 +28,9 @@ include __DIR__ . '/../includes/header.php';
                 <p>
                     <label for="kategori">Kategori</label>
                     <select id="kategori" name="kategori">
-                        <option value="fiksi">Fiksi</option>
-                        <option value="non-fiksi">Non-Fiksi</option>
-                        <option value="pelajaran">Pelajaran</option>
+                        <option value="Fiksi">Fiksi</option>
+                        <option value="Non-Fiksi">Non-Fiksi</option>
+                        <option value="Pelajaran">Pelajaran</option>
                     </select>
                 </p>
                 <button type="submit">Simpan</button>
