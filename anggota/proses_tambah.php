@@ -35,20 +35,30 @@ if (!empty($errors)) {
     exit;
 }
 
-$stmt = $pdo->prepare(
-    "INSERT INTO anggota (no_anggota, nama, alamat, no_hp, email, tahun_bergabung)
-     VALUES (:no_anggota, :nama, :alamat, :no_hp, :email, :tahun_bergabung)
-     RETURNING id"
-);
-$stmt->execute([
-    'no_anggota' => $no_anggota,
-    'nama' => $nama,
-    'alamat' => $alamat,
-    'no_hp' => $no_hp,
-    'email' => $email,
-    'tahun_bergabung' => (int) $tahun_bergabung,
-]);
+try {
+    $stmt = $pdo->prepare(
+        "INSERT INTO anggota (no_anggota, nama, alamat, no_hp, email, tahun_bergabung)
+         VALUES (:no_anggota, :nama, :alamat, :no_hp, :email, :tahun_bergabung)
+         RETURNING id"
+    );
+    $stmt->execute([
+        'no_anggota' => $no_anggota,
+        'nama' => $nama,
+        'alamat' => $alamat,
+        'no_hp' => $no_hp,
+        'email' => $email,
+        'tahun_bergabung' => (int) $tahun_bergabung,
+    ]);
 
-$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
-header('Location: list.php');
-exit;
+    $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
+    header('Location: list.php');
+    exit;
+} catch (PDOException $e) {
+    if ($e->getCode() === '23505') {
+        $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'No. Anggota sudah dipakai, gunakan nomor lain.'];
+    } else {
+        $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Terjadi kesalahan saat menyimpan data.'];
+    }
+    header('Location: tambah.php');
+    exit;
+}
