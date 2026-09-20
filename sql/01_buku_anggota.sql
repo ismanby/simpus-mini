@@ -20,5 +20,6 @@ CREATE TABLE IF NOT EXISTS anggota (
     alamat VARCHAR(255),
     no_hp VARCHAR(30),
     email VARCHAR(255),
-    tahun_bergabung INTEGER
+    tahun_bergabung INTEGER,
+    tanggal_ditambahkan TIMESTAMP DEFAULT NOW()
 );
