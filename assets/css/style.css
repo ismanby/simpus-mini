@@ -275,6 +275,81 @@ footer {
     color: #721c24;
 }
 
+/* ===== Tombol Aksi di Tabel (Jobsheet 9) ===== */
+td a.btn-edit {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    background-color: #f0ad4e;
+    color: #fff;
+    vertical-align: middle;
+}
+
+td a.btn-edit:hover {
+    text-decoration: none;
+    background-color: #ec971f;
+}
+
+td button.btn-detail {
+    vertical-align: middle;
+}
+
+td form.form-hapus {
+    display: inline;
+}
+
+td form.form-hapus button.btn-hapus {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+td form.form-hapus button.btn-hapus:hover {
+    background-color: #c9302c;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.pagination a {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+    color: #8a6674;
+}
+
+.pagination a:hover {
+    text-decoration: none;
+    background-color: #f3ecef;
+}
+
+.pagination a.active {
+    background-color: #8a6674;
+    color: #fff;
+    border-color: #8a6674;
+}
+
+/* ===== Form Pencarian Server ===== */
+.search-box form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.search-box form span {
+    flex: 1;
+    max-width: 320px;
+}
+
 /* ===== Responsive Breakpoints ===== */
 
 /* Tablet ke bawah */
