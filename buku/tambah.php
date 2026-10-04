@@ -14,6 +14,7 @@ unset($_SESSION['flash']);
             <?php endif; ?>
 
             <form id="form-tambah" method="post" action="proses_tambah.php" novalidate>
+                <?php echo csrf_field(); ?>
                 <p>
                     <label for="judul">Judul</label>
                     <input type="text" id="judul" name="judul" required>

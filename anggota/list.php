@@ -78,6 +78,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                             <td>
                                 <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">
+                                    <?php echo csrf_field(); ?>
                                     <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>

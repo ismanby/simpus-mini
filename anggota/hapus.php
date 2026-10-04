@@ -1,13 +1,15 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/csrf.php';
+require __DIR__ . '/../includes/koneksi.php';
+
+csrf_verify();
 
 if ($_SESSION['role'] !== 'admin') {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Hanya admin yang boleh menghapus anggota.'];
     header('Location: list.php');
     exit;
 }
-
-require __DIR__ . '/../includes/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: list.php');
