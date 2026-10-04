@@ -169,7 +169,7 @@ form label {
     color: #444;
 }
 
-form input,
+form input:not([type="checkbox"]),
 form select {
     width: 100%;
     max-width: 400px;

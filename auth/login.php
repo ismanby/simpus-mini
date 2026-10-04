@@ -29,8 +29,12 @@ unset($_SESSION['flash']);
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </p>
+                <p>
+                    <label><input type="checkbox" name="remember" value="1"> Ingat saya</label>
+                </p>
                 <button type="submit">Masuk</button>
             </form>
+
             <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
         </section>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
