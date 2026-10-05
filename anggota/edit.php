@@ -31,7 +31,7 @@ if (!$anggota) {
 
             <form id="form-tambah" method="post" action="proses_edit.php" novalidate>
                 <?php echo csrf_field(); ?>
-                <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
+                <input type="hidden" name="id" value="<?php echo (int) $anggota['id']; ?>">
                 <p>
                     <label for="no_anggota">No. Anggota</label>
                     <input type="text" id="no_anggota" name="no_anggota" value="<?php echo $anggota['no_anggota']; ?>" required>
