@@ -27,6 +27,9 @@ $stmt->execute(['username' => $username]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user && password_verify($password, $user['password'])) {
+    // Regenerasi session ID setelah login berhasil untuk mencegah session fixation.
+    session_regenerate_id(true);
+    
     unset($_SESSION['login_attempts'][$username]);
 
     $_SESSION['user_id'] = $user['id'];
