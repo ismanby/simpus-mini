@@ -5,8 +5,8 @@ require __DIR__ . '/../includes/koneksi.php';
 
 csrf_verify();
 
-if ($_SESSION['role'] !== 'admin') {
-    $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Hanya admin yang boleh menghapus anggota.'];
+if ($_SESSION['role'] !== 'Admin') {
+    $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Hanya Admin yang boleh menghapus anggota.'];
     header('Location: list.php');
     exit;
 }
