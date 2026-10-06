@@ -34,7 +34,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
             <h2>Daftar Anggota</h2>
 
             <?php if ($flash): ?>
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+                <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
             <?php endif; ?>
 
             <div class="search-box">
@@ -76,10 +76,10 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                             <td><?php echo e($anggota['email']); ?></td>
                             <td><?php echo e($anggota['tahun_bergabung']); ?></td>
                             <td>
-                                <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
+                                <a href="edit.php?id=<?php echo (int) $anggota['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">
                                     <?php echo csrf_field(); ?>
-                                    <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo (int) $anggota['id']; ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>

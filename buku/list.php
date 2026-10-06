@@ -33,7 +33,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
             <h2>Daftar Buku</h2>
 
             <?php if ($flash): ?>
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+                <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
             <?php endif; ?>
 
             <div class="search-box">
@@ -72,14 +72,14 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                             <td><?php echo e($buku['pengarang']); ?></td>
                             <td><?php echo $buku['tahun']; ?></td>
                             <td><?php echo $buku['stok']; ?></td>
-                            <td><?php echo $buku['kategori']; ?></td>
+                            <td><?php echo e($buku['kategori']); ?></td>
                             <td><?php echo date('d M Y H:i', strtotime($buku['tanggal_ditambahkan'])); ?></td>
                             <td>
-                                <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
+                                <a href="edit.php?id=<?php echo (int) $buku['id']; ?>" class="btn-edit">Edit</a>
                                 <button type="button" class="btn-detail">Detail</button>
                                 <form class="form-hapus" method="post" action="hapus.php">
                                     <?php echo csrf_field(); ?>
-                                    <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo (int) $buku['id']; ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>
