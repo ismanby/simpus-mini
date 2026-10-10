@@ -18,10 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $id = $_POST['id'] ?? null;
 if ($id) {
-    $stmt = $pdo->prepare("DELETE FROM anggota WHERE id = :id");
-    $stmt->execute(['id' => $id]);
-    $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil dihapus.'];
+    try {
+        $stmt = $pdo->prepare("DELETE FROM anggota WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil dihapus.'];
+    } catch (PDOException $e) {
+        if ($e->getCode() === '23503') {
+            $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Anggota tidak bisa dihapus karena sudah punya riwayat peminjaman.'];
+        } else {
+            $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Terjadi kesalahan saat menghapus data.'];
+        }
+    }
 }
-
 header('Location: list.php');
 exit;

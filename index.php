@@ -5,9 +5,19 @@ require __DIR__ . '/includes/koneksi.php';
 
 $totalBuku = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
 $totalAnggota = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
+$totalDipinjam = $pdo->query("SELECT COUNT(*) FROM peminjaman WHERE status = 'dipinjam'")->fetchColumn();
+$totalTerlambat = $pdo->query(
+    "SELECT COUNT(*) FROM peminjaman WHERE status = 'dipinjam' AND tanggal_pinjam < CURRENT_DATE - 14"
+)->fetchColumn();
+
+$flash = $_SESSION['flash'] ?? null;
+unset($_SESSION['flash']);
 ?>
         <section>
             <h2>Selamat Datang di Sistem Perpustakaan Mini</h2>
+            <?php if ($flash): ?>
+                <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
+            <?php endif; ?>
             <p>Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
         </section>
 
@@ -23,11 +33,11 @@ $totalAnggota = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
             </article>            
             <article>
                 <h3>Sedang Dipinjam</h3>
-                <p>0</p>
+                <p><?php echo (int) $totalDipinjam; ?></p>
             </article>
             <article>
                 <h3>Buku Terlambat</h3>
-                <p>0</p>
+                <p><?php echo (int) $totalTerlambat; ?></p>
             </article>
         </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>
