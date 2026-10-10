@@ -23,6 +23,19 @@ if (!ctype_digit((string) $anggotaId) || !ctype_digit((string) $bukuId)) {
 try {
     $pdo->beginTransaction();
 
+    // Validasi bisnis: anggota dengan peminjaman aktif lebih dari 14 hari
+    // tidak boleh meminjam buku baru.
+    $cekTerlambat = $pdo->prepare(
+        "SELECT COUNT(*) FROM peminjaman
+         WHERE anggota_id = :anggota_id
+           AND status = 'dipinjam'
+           AND tanggal_pinjam < CURRENT_DATE - 14"
+    );
+    $cekTerlambat->execute(['anggota_id' => $anggotaId]);
+    if ($cekTerlambat->fetchColumn() > 0) {
+        throw new Exception('Anggota ini punya peminjaman yang terlambat lebih dari 14 hari. Buku harus dikembalikan dulu sebelum meminjam lagi.');
+    }
+    
     // Kunci baris buku ini supaya tidak ada transaction lain yang bisa
     // mengubah stoknya sampai transaction ini selesai.
     $cek = $pdo->prepare("SELECT stok FROM buku WHERE id = :id FOR UPDATE");
