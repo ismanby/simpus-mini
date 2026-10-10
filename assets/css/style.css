@@ -363,6 +363,23 @@ td form.form-hapus button.btn-hapus:hover {
     text-decoration: underline;
 }
 
+/* ===== Tombol Kembalikan (Jobsheet 12) ===== */
+td form.form-kembali {
+    display: inline;
+}
+
+td form.form-kembali button.btn-kembali {
+    background-color: #5cb85c;
+    color: #fff;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+
+td form.form-kembali button.btn-kembali:hover {
+    background-color: #449d44;
+}
+
 /* ===== Responsive Breakpoints ===== */
 
 /* Tablet ke bawah */
