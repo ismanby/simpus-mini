@@ -28,7 +28,7 @@ try {
     $cekTerlambat = $pdo->prepare(
         "SELECT COUNT(*) FROM peminjaman
          WHERE anggota_id = :anggota_id
-           AND status = 'dipinjam'
+           AND status = 'Dipinjam'
            AND tanggal_pinjam < CURRENT_DATE - 14"
     );
     $cekTerlambat->execute(['anggota_id' => $anggotaId]);

@@ -5,9 +5,9 @@ require __DIR__ . '/includes/koneksi.php';
 
 $totalBuku = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
 $totalAnggota = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
-$totalDipinjam = $pdo->query("SELECT COUNT(*) FROM peminjaman WHERE status = 'dipinjam'")->fetchColumn();
+$totalDipinjam = $pdo->query("SELECT COUNT(*) FROM peminjaman WHERE status = 'Dipinjam'")->fetchColumn();
 $totalTerlambat = $pdo->query(
-    "SELECT COUNT(*) FROM peminjaman WHERE status = 'dipinjam' AND tanggal_pinjam < CURRENT_DATE - 14"
+    "SELECT COUNT(*) FROM peminjaman WHERE status = 'Dipinjam' AND tanggal_pinjam < CURRENT_DATE - 14"
 )->fetchColumn();
 
 $flash = $_SESSION['flash'] ?? null;

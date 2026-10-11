@@ -56,7 +56,7 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <?php if (empty($daftarAktif)): ?>
                     <tr>
-                        <td colspan="4">Tidak ada buku yang sedang dipinjam.</td>
+                        <td colspan="5">Tidak ada buku yang sedang dipinjam.</td>
                     </tr>
                     <?php else: ?>
                         <?php foreach ($daftarAktif as $trx): ?>

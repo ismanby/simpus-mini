@@ -25,12 +25,12 @@ try {
     $stmt->execute(['id' => $id]);
     $trx = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$trx || $trx['status'] !== 'dipinjam') {
+    if (!$trx || $trx['status'] !== 'Dipinjam') {
         throw new Exception('Transaksi tidak ditemukan atau sudah dikembalikan.');
     }
 
     $updatePeminjaman = $pdo->prepare(
-        "UPDATE peminjaman SET status = 'dikembalikan', tanggal_kembali = CURRENT_DATE WHERE id = :id"
+        "UPDATE peminjaman SET status = 'Dikembalikan', tanggal_kembali = CURRENT_DATE WHERE id = :id"
     );
     $updatePeminjaman->execute(['id' => $id]);
 

@@ -3,14 +3,14 @@ require __DIR__ . '/../includes/auth.php';
 require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
 
-csrf_verify();
-
 // Sengaja hanya menerima POST (bukan GET) agar penghapusan tidak bisa
 // dipicu tanpa sengaja lewat link/preview crawler.
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: list.php');
     exit;
 }
+
+csrf_verify();
 
 $id = $_POST['id'] ?? null;
 if ($id) {

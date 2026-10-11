@@ -70,7 +70,7 @@ if ($anggotaId !== '' && ctype_digit((string) $anggotaId)) {
                             <td><?php echo e($r['judul']); ?></td>
                             <td><?php echo date('d M Y', strtotime($r['tanggal_pinjam'])); ?></td>
                             <td><?php echo $r['tanggal_kembali'] ? date('d M Y', strtotime($r['tanggal_kembali'])) : '-'; ?></td>
-                            <td><?php echo $r['status'] === 'dipinjam' ? 'Dipinjam' : 'Selesai'; ?></td>
+                            <td><?php echo $r['status'] === 'Dipinjam' ? 'Dipinjam' : 'Selesai'; ?></td>
                         </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
