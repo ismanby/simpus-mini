@@ -9,7 +9,7 @@ unset($_SESSION['flash']);
 
 $keyword = trim($_GET['q'] ?? '');
 
-$sqlDasar = "SELECT p.id, b.judul, a.nama, p.tanggal_pinjam, p.tanggal_jatuh_tempo,
+$sqlDasar = "SELECT p.id, b.judul, a.nama, a.no_hp, p.tanggal_pinjam, p.tanggal_jatuh_tempo,
                     (p.tanggal_jatuh_tempo < CURRENT_DATE) AS Terlambat
              FROM peminjaman p
              JOIN buku b ON b.id = p.buku_id
@@ -48,6 +48,7 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <th>Buku</th>
                         <th>Anggota</th>
+                        <th>No. HP</th>
                         <th>Tanggal Pinjam</th>
                         <th>Jatuh Tempo</th>
                         <th>Aksi</th>
@@ -56,13 +57,14 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <?php if (empty($daftarAktif)): ?>
                     <tr>
-                        <td colspan="5">Tidak ada buku yang sedang dipinjam.</td>
+                        <td colspan="6">Tidak ada buku yang sedang dipinjam.</td>
                     </tr>
                     <?php else: ?>
                         <?php foreach ($daftarAktif as $trx): ?>
                         <tr>
                             <td><?php echo e($trx['judul']); ?></td>
                             <td><?php echo e($trx['nama']); ?></td>
+                            <td><?php echo e($trx['no_hp']); ?></td>
                             <td><?php echo date('d M Y', strtotime($trx['tanggal_pinjam'])); ?></td>
                             <td class="<?php echo $trx['terlambat'] ? 'terlambat' : ''; ?>">
                                 <?php echo date('d M Y', strtotime($trx['tanggal_jatuh_tempo'])); ?>
